@@ -1,0 +1,21 @@
+body{
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --azul: #1F43DB;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.celular-caja{
+    background-color: var(--azul);
+    height: 914px;
+    width: 412px;
+}
