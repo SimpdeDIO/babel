@@ -1,0 +1,179 @@
+body{
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+:root{
+    --azul: #1F43DB;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.celular-caja{
+    background-color: var(--azul);
+    height: 914px;
+    width: 412px;
+
+}
+
+
+/*     Cheeseburguer     */
+
+.encabezado{
+    padding: 5px;
+}
+
+.abrir-menu{
+    border-radius: 50%;
+    padding: 8px 10px;
+    border: none;
+    width: 40px;
+    height: 38px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+}
+
+.abrir-menu.abierto{
+    background-color: #162257;
+}
+
+
+.navbar{
+    margin-top: 5px;
+    opacity: 0;
+    visibility: hidden;
+    width: 50%;
+    background-color: white ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-list li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.nav-list li button{
+    width: 195px;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-list li a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar.visible{
+    opacity: 1;
+    visibility: visible;
+    
+}
+
+.perfil-img-cont{
+    margin-top: 20px;
+ display: flex;
+ justify-content: center;
+}
+#perfil-img{
+    width: 50%;
+    height: auto;
+}
+
+/*       Boton microfono       */
+
+.microfono-cont{
+    padding: 20px;
+    margin-top: -350px;
+    margin-bottom: 100px;
+}
+
+#logo-btn{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    align-items: center;
+   
+}
+
+#microfono-btn{
+    border-radius: 50%;
+    padding: 10px 10px;
+    box-shadow: 0 0 20px #070f31;
+    background-color: transparent;
+    border: none;
+
+}
+
+#microfono-btn:active{
+    box-shadow: 0 0 20px #142a8f;
+}
+
+
+
+/*            Texto de muestra               */
+
+.text-cont{
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    margin-top: 50px;
+}
+
+/*        NAVBAR de abajo      */
+
+.navbar_abajo{
+    
+    background-color: white;
+    border: 1px solid rgb(173, 173, 173);
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-izq, .btn-derecha{
+   
+    width: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    
+}
+
+.downnav-btn{
+    height: 85px ;
+    width: 50%;
+    border-radius: 20%;
+    border: none;
+    background-color: transparent;
+}
+
+.downnav-btn:active{
+    background-color: rgb(212, 212, 212);
+}
