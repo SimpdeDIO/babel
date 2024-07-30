@@ -13,32 +13,34 @@
 <section class="main">
     <div class="celular-caja">
 
-    <!--------- menu hamburguesa -------------->
-        <div class="encabezado">
-            <button onclick="abrir()" class="abrir-menu" id="abrir-menu"><i class="bi bi-three-dots-vertical"></i></button>
-            <nav class="navbar" id="nav" >
-                <div class="perfil-img-cont">
-                    <img id="perfil-img" src="../img/usuario.png" alt="">
-                </div>
-                <ul class="nav-list">
-                    <li>
-                        <a href="../menu hamburguesa/cuenta.html"><button><p>Cuenta</p></button></a>
-                    </li>
-                    <li>
-                        <a href="../menu hamburguesa/config.html"><button><p>Ajustes y privacidad</p></button></a>
-                    </li>
-                    <li>
-                        <a href="../menu hamburguesa/chatconfig.html"><button><p>Chat</p></button></a>
-                    </li>
-                    <li>
-                        <a href="../menu hamburguesa/idiomas.html"><button><p>Idiomas</p></button></a>
-                    </li>
-                    <li>
-                        <a href="../menu hamburguesa/reporte.html"><button><p>Reportar un problema</p></button></a>
-                    </li>   
-                </ul>
-            </nav>
-        </div>
+     <!--------- menu hamburguesa -------------->
+     <div class="encabezado">
+        <button onclick="abrir()" class="abrir-menu" id="abrir-menu"><i class="bi bi-three-dots-vertical"></i></button>
+        <nav class="navbar" id="nav" >
+            <div class="cerrar-btn-cont"><button onclick="cerrar()" class="cerrar-menu" id="cerrar-menu"><i class="bi bi-x-lg"></i></button></div>
+        
+            <div class="perfil-img-cont">
+                <img id="perfil-img" src="../img/usuario.png" alt="">
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="../menu hamburguesa/cuenta.html"><button><p>Cuenta</p></button></a>
+                </li>
+                <li>
+                    <a href="../menu hamburguesa/config.html"><button><p>Ajustes y privacidad</p></button></a>
+                </li>
+                <li>
+                    <a href="../menu hamburguesa/chatconfig.html"><button><p>Chat</p></button></a>
+                </li>
+                <li>
+                    <a href="../menu hamburguesa/idiomas.html"><button><p>Idiomas</p></button></a>
+                </li>
+                <li>
+                    <a href="../menu hamburguesa/reporte.html"><button><p>Reportar un problema</p></button></a>
+                </li>   
+            </ul>
+        </nav>
+    </div>
         <div class="welcome-title"><h1>Bienvenido a BABEL</h1></div>
         <div class="welcome-logo-cont"><img id="welcome-img" src="../img/logo.png" alt=""></div>
         <div class="cajas-cont">
