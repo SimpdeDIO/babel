@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="traductor.css">
+    
+
+</head>
+<body>
+<section class="main">
+    <div class="celular-caja">
+
+    <!--------- menu hamburguesa -------------->
+        <div class="encabezado">
+            <a href="../main page/main.html"><button class="atras-btn"><i class="bi bi-arrow-left"></i></button></a>
+            <button onclick="abrir()" class="abrir-menu" id="abrir-menu"><i class="bi bi-three-dots-vertical"></i></button>
+            <nav class="navbar" id="nav" >
+                <div class="cerrar-btn-cont"><button onclick="cerrar()" class="cerrar-menu" id="cerrar-menu"><i class="bi bi-x-lg"></i></button></div>
+            
+                <div class="perfil-img-cont">
+                    <img id="perfil-img" src="../img/usuario.png" alt="">
+                </div>
+                <ul class="nav-list">
+                    <li>
+                        <a href="../menu hamburguesa/cuenta.html"><button><p>Cuenta</p></button></a>
+                    </li>
+                    <li>
+                        <a href="../menu hamburguesa/config.html"><button><p>Ajustes y privacidad</p></button></a>
+                    </li>
+                    <li>
+                        <a href="../menu hamburguesa/chatconfig.html"><button><p>Chat</p></button></a>
+                    </li>
+                    <li>
+                        <a href="../menu hamburguesa/idiomas.html"><button><p>Idiomas</p></button></a>
+                    </li>
+                    <li>
+                        <a href="../menu hamburguesa/reporte.html"><button><p>Reportar un problema</p></button></a>
+                    </li>   
+                </ul>
+            </nav>
+        </div>
+        <div class="microfono-cont">
+            <button id="microfono-btn"><img id="logo-btn" src="../img/logo.png" alt=""></button>
+        </div>
+        <div class="text-cont">
+            <p>alala</p>
+        </div>
+
+        <div class="navbar_abajo">
+            <div class="btn-izq"> <button class="downnav-btn">Reformular texto</button></div>
+            <div class="btn-derecha"><button class="downnav-btn">chats</button></div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="traductor.js">
+
+</script>
+
+</body>
+</html>

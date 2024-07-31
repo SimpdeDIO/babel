@@ -1,0 +1,165 @@
+body{
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--azul);
+}
+
+:root{
+    --azul: #1F43DB;
+}
+
+
+
+/*     Cheeseburguer     */
+
+.encabezado{
+    padding: 10px;
+   
+    display: flex;
+    justify-content: end;
+}
+
+.abrir-menu{
+    border-radius: 50%;
+    padding: 8px 10px;
+    border: none;
+    width: 40px;
+    height: 38px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+}
+
+.abrir-menu.abierto{
+    background-color: #162257;
+}
+
+
+.navbar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: 50%;
+    background-color: white ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-list li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.nav-list li button{
+    width: 195px;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-list li a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar.visible{
+    opacity: 1;
+    visibility: visible;
+    
+}
+
+.perfil-img-cont{
+    margin-top: 20px;
+ display: flex;
+ justify-content: center;
+}
+#perfil-img{
+    width: 50%;
+    height: auto;
+}
+
+
+
+
+
+.welcome-title{
+    margin-top: 55px;
+    text-align: center;
+}
+
+.welcome-logo-cont{
+    display: flex;
+    justify-content: center;
+}
+
+#welcome-img{
+    width: 150px;
+    height: auto;
+}
+
+.cajas-cont{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+    margin-bottom: 154px;
+
+}
+
+.caja{
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.caja button{
+    width: 20rem;
+    height: 150px;
+    background: none;
+    border: none;
+}
+
+.caja button:active{
+    background-color: rgb(221, 221, 221);
+    border-radius: 10px;
+}
+
+.caja-chat{
+    background-color: white;
+    border-radius: 10px;
+}
+
+.caja-chat button{
+    width: 20rem;
+    height: 50px;
+    background: none;
+    border: none;
+}
+
+.caja-chat button:active{
+    background-color: rgb(221, 221, 221);
+    border-radius: 10px;
+}
