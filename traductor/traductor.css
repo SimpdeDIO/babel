@@ -11,6 +11,9 @@ body{
     --azul: #1F43DB;
 }
 
+#textArea{
+    border: none;
+}
 
 .atras-btn{
     border-radius: 50%;
