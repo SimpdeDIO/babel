@@ -57,7 +57,7 @@ const requestOptions = {
 
     'Content-Type': 'application/json',
 
-	'X-goog-api-key': 'AIzaSyBahhDaOWo0LEBjDFZP_Lfvc2GoL6uM2hY'
+	'X-goog-api-key': ''
 
   },
 
