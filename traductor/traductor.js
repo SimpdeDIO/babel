@@ -1,5 +1,21 @@
 const nav = document.querySelector("nav");
 const abrir_btn = document.getElementById("abrir-menu");
+
+
+function abrir() {
+    nav.classList.add("visible");
+}
+
+function cerrar() {
+    nav.classList.remove("visible");
+}
+
+
+
+
+
+//          microfono
+
 const btnStartStop = document.getElementById('microfono-btn');
 const textArea = document.getElementById('textArea');
 
@@ -41,7 +57,9 @@ recognition.onend = () => {
 recognition.onresult = (event) => {
     const result = event.results[event.results.length - 1][0];
     const texto = result.transcript;
-    textArea.value = texto;
+
+    // textArea.value = texto;
+    textArea.textContent = texto
     leerTexto(texto);
 };
 

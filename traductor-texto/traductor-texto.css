@@ -38,6 +38,15 @@ body{
     background-color: #162257;
 }
 
+.cerrar-btn-cont{
+    padding: 10px;
+}
+.cerrar-menu{
+    background: transparent;
+    border: none;
+}
+
+
 
 .navbar{
     position: absolute;

@@ -55,9 +55,12 @@ body{
 .abrir-menu.abierto{
     background-color: #162257;
 }
-
 .cerrar-btn-cont{
-    align-items: end;
+    padding: 10px;
+}
+.cerrar-menu{
+    background: transparent;
+    border: none;
 }
 
 .navbar{
@@ -157,8 +160,8 @@ body{
     width: 100%;
     background-color: white;
     text-align: center;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     margin-top: 50px;
 }
 
@@ -170,7 +173,7 @@ body{
     border: 1px solid rgb(173, 173, 173);
     height: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .btn-izq, .btn-derecha{
