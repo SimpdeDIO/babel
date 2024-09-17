@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyBahhDaOWo0LEBjDFZP_Lfvc2GoL6uM2hY'; // Reemplaza con tu clave API de Google
+const API_KEY = ''; // Reemplaza con tu clave API de Google
 const languageMap = {}; // Mapeo de códigos de idioma a nombres
 
 const nav = document.querySelector("nav");
