@@ -8,8 +8,6 @@ const textArea = document.getElementById('textArea');
 const detectedLanguageEl = document.getElementById('idioma-detectado');
 const languageSelect = document.getElementById('language-select');
 
-let isRequestInProgress = false; // Variable para manejar el estado de las solicitudes
-
 function abrir() {
     nav.classList.add("visible");
 }
