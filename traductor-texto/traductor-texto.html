@@ -38,10 +38,13 @@
 
         <div class="welcome-title"><h1>Bienvenido a BABEL</h1></div>
 
-
         <div class="allcont">
+            <p id="idiomaDetectado">Idioma detectado: <span id="idiomaDetectadoNombre">N/A</span></p>
+            <label for="language-select">Traducir a:</label>
+            <select id="language-select"></select>
+            <button class="invertir-btn" onclick="invertirIdiomas()">Invertir Idiomas</button>
             <div class="texto-cont">
-                <input id="textoUsuario" type="text" placeholder="insertar texto">
+                <input id="textoUsuario" type="text" placeholder="insertar texto" oninput="detectarIdioma()">
                 <button class="enviar-btn" onclick="traducir()">Enviar</button>
             </div>
 
@@ -58,7 +61,7 @@
     </div>
 </section>  
 
-    <script src="traductor-texto2.js">
+    <script src="traductor-texto.js">
         
     </script>
 </body>

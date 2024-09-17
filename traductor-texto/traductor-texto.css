@@ -12,7 +12,12 @@ body{
     --azul: #1F43DB;
 }
 
-
+#language-select{
+    margin-bottom: 30px;
+}
+.invertir-btn{
+    margin-bottom: 30px;
+}
 
 /*     Cheeseburguer     */
 

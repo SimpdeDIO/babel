@@ -7,14 +7,30 @@ body{
     background-color: var(--azul);
 }
 
+#idioma-detectado{
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+.listado{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#selector{
+    margin-top: 20px;
+    color: white;
+}
+#language-select{
+    margin-top: 10px;
+}
+
 :root{
     --azul: #1F43DB;
 }
-
-#textArea{
-    border: none;
-}
-
 .atras-btn{
     border-radius: 50%;
     padding: 8px 10px;
@@ -35,8 +51,9 @@ body{
 /*     Cheeseburguer     */
 
 .encabezado{
-    padding: 5px;
+   
     display: flex;
+    
     justify-content: space-between;
 }
 
@@ -104,7 +121,7 @@ body{
 
 .nav-list li a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .navbar.visible{
@@ -112,7 +129,6 @@ body{
     visibility: visible;
     
 }
-
 .perfil-img-cont{
     margin-top: 20px;
  display: flex;
@@ -123,28 +139,22 @@ body{
     height: auto;
 }
 
-/*       Boton microfono       */
-
 .microfono-cont{
-    padding: 20px;
+ 
     margin-top: 60px;
-    margin-bottom: 100px;
-}
-
-#logo-btn{
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-    align-items: center;
+    margin-bottom: 30px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
    
 }
-
-#microfono-btn{
-    border-radius: 50%;
-    padding: 10px 10px;
-    box-shadow: 0 0 20px #070f31;
-    background-color: transparent;
-    border: none;
+.microfono-cont button{
+width: 60%;
+padding: 10px 10px;
+border-radius: 50%;
+box-shadow: 0 0 20px #070f31;
+border: none;
+background-color: transparent;
 
 }
 
@@ -152,54 +162,55 @@ body{
     box-shadow: 0 0 20px #142a8f;
 }
 
+.microfono-cont img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    align-items: center;
+}
 
+/*       Texto de muestra           */
 
-/*            Texto de muestra               */
+.navbar-cont{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+}
 
 .text-cont{
-    width: 100%;
-    
+    width: 80%;
     background-color: white;
     text-align: center;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    margin-top: 50px;
+    min-height: 9rem;
 }
 
-/*        NAVBAR de abajo      */
-
-
-
-.navbar_abajo{
-    width: 100%;
-    background-color: white;
-    border: 1px solid rgb(173, 173, 173);
-    height: auto;
+.lista-btn{
     display: flex;
-    justify-content: center;
-
-}
-
-.btn-izq, .btn-derecha{
-   
-    width: 50%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    padding: 20px 0px;
-
- 
-    
 }
 
 .downnav-btn{
-    height: 85px ;
+    height: 80px ;
     width: 50%;
     border-radius: 20%;
     border: none;
-    background-color: transparent;
+    margin: 10px;
+    text-align: center;
+   
+
 }
 
-.downnav-btn:active{
-    background-color: rgb(212, 212, 212);
+/* .boton-lista{
+    margin: 10px;
+} */
+
+.downbar{
+    border-top: 1px solid grey;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
 }

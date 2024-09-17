@@ -1,5 +1,14 @@
+const API_KEY = 'AIzaSyBahhDaOWo0LEBjDFZP_Lfvc2GoL6uM2hY'; // Reemplaza con tu clave API de Google
+const languageMap = {}; // Mapeo de códigos de idioma a nombres
+
 const nav = document.querySelector("nav");
 const abrir_btn = document.getElementById("abrir-menu");
+const btnStartStop = document.getElementById('microfono-btn');
+const textArea = document.getElementById('textArea');
+const detectedLanguageEl = document.getElementById('idioma-detectado');
+const languageSelect = document.getElementById('language-select');
+
+let isRequestInProgress = false; // Variable para manejar el estado de las solicitudes
 
 function abrir() {
     nav.classList.add("visible");
@@ -9,28 +18,93 @@ function cerrar() {
     nav.classList.remove("visible");
 }
 
-// Microfono
-const btnStartStop = document.getElementById('microfono-btn');
-const textArea = document.getElementById('textArea');
+// Función para llenar el menú desplegable con los idiomas disponibles
+function cargarIdiomas() {
+    const apiUrlLanguages = `https://translation.googleapis.com/language/translate/v2/languages?key=${API_KEY}&target=es`;
 
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    fetch(apiUrlLanguages)
+        .then(response => response.json())
+        .then(data => {
+            const targetSelect = document.getElementById('language-select');
+            targetSelect.innerHTML = ''; // Limpiar opciones existentes
 
-recognition.continuous = true;
-recognition.interimResults = false;
-let isRecognizing = false;
-let currentLang = 'es-ES'; 
+            data.data.languages.forEach(language => {
+                const optionTarget = document.createElement('option');
+                optionTarget.value = language.language;
+                optionTarget.textContent = language.name;
+                targetSelect.appendChild(optionTarget);
 
-function setLanguage(lang) {
-    recognition.lang = lang;
-    currentLang = lang;
+                // Crear mapeo de código de idioma a nombre de idioma
+                languageMap[language.language] = language.name;
+            });
+
+            // Inicializar Select2
+            $('#language-select').select2({
+                placeholder: 'Selecciona un idioma',
+                width: '100%'
+            });
+        })
+        .catch(error => console.error('Error al obtener la lista de idiomas:', error));
 }
 
-const languages = {
-    'Español': 'es-ES',
-    'Inglés': 'en-US',
-    'Francés': 'fr-FR',
-    'Alemán': 'de-DE'
-};
+async function detectAndTranslate(texto) {
+    const apiUrlDetect = 'https://translation.googleapis.com/language/translate/v2/detect';
+    
+    const data = { q: texto };
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': API_KEY
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(apiUrlDetect, requestOptions);
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+        const data = await response.json();
+        const detectedLanguage = data.data.detections[0][0].language;
+        detectedLanguageEl.textContent = `Idioma Detectado: ${languageMap[detectedLanguage] || detectedLanguage}`;
+        traducir(texto, detectedLanguage);
+    } catch (error) {
+        console.error('Error detectando el idioma:', error);
+    }
+}
+
+async function traducir(texto, detectedLanguage) {
+    const targetLanguage = languageSelect.value || 'es'; // Traducir al idioma seleccionado en el desplegable o al español por defecto
+    const apiUrlTranslate = 'https://translation.googleapis.com/language/translate/v2';
+    
+    const data = {
+        q: texto,
+        source: detectedLanguage,
+        target: targetLanguage
+    };
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': API_KEY
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(apiUrlTranslate, requestOptions);
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+        const data = await response.json();
+        const translatedText = data.data.translations[0].translatedText;
+        textArea.textContent = translatedText;
+    } catch (error) {
+        console.error('Error en la traducción:', error);
+    }
+}
 
 btnStartStop.addEventListener('click', () => {
     if (isRecognizing) {
@@ -39,6 +113,11 @@ btnStartStop.addEventListener('click', () => {
         recognition.start();
     }
 });
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.continuous = true;
+recognition.interimResults = false;
+let isRecognizing = false;
 
 recognition.onstart = () => {
     isRecognizing = true;
@@ -51,93 +130,10 @@ recognition.onend = () => {
 recognition.onresult = (event) => {
     const result = event.results[event.results.length - 1][0];
     const texto = result.transcript;
-    
     console.log("Texto reconocido: " + texto);
-
-    detectarIdioma(texto);
-    
+    detectAndTranslate(texto);
 };
 
-// Función para detectar el idioma usando la API de Google Translate
-function detectarIdioma(texto) {
-    const apiUrl = 'https://translation.googleapis.com/language/translate/v2/detect';
-    
-    const data = {
-        q: texto
-    };
+// Inicializar el menú de idiomas
+cargarIdiomas();
 
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-goog-api-key': 'AIzaSyBahhDaOWo0LEBjDFZP_Lfvc2GoL6uM2hY' // Clave API de Google
-        },
-        body: JSON.stringify(data)
-    };
-
-    fetch(apiUrl, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error en la solicitud de detección de idioma');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const detectedLanguage = data.data.detections[0][0].language;
-            console.log("Idioma detectado: " + detectedLanguage);
-           traducir(texto,detectedLanguage);
-            // Aquí puedes agregar una lógica adicional si deseas hacer algo con el idioma detectado
-        })
-        .catch(error => {
-            console.error('Error detectando el idioma:', error);
-        });
-
-       
-}
-function traducir(texto,detectedLanguage) {
-    console.log("se lanzo la funcion");
-    const apiUrl = 'https://translation.googleapis.com/language/translate/v2';
-    const q = texto;
-    const b = detectedLanguage;
-    const result = textArea;
-    //const lenguaje = detectedLanguage;
-
-    console.log("Cargo: " + q);
-
-    // Datos para la solicitud
-    const data = {
-        q: q,
-        source: b,
-
-        target: 'es'
-    };
-
-    // Opciones de la solicitud
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-goog-api-key': ''
-        },
-        body: JSON.stringify(data)
-    };
-
-    console.log("Data: " + data.q);
-
-    // Enviar la solicitud
-    fetch(apiUrl, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ocurrió un error con la solicitud');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Response: " + data);
-            const translatedText = data.data.translations[0].translatedText;
-            result.textContent = translatedText;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
