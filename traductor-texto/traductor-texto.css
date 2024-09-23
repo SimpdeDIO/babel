@@ -17,6 +17,11 @@ body{
 }
 .invertir-btn{
     margin-bottom: 30px;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
 }
 
 /*     Cheeseburguer     */
