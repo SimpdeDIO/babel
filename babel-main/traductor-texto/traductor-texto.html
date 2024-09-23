@@ -58,7 +58,14 @@
         </div>
         <div class="cajas-cont">
             <div class="caja-chat">
-                <a href="../chats/historial.html"><button>Guardar Chat</button></a>
+                <form action="guardarhistorial.php" method="POST">
+                    <input id="textoTra" type="text" value="" name="textoTra">
+                    <input id="textoComun" type="text" value="" name="textoComun">
+                    <input id="idioma" type="text" value="" name="idioma">
+
+               <button>Guardar Chat</button></a>     
+                </form>
+                
             </div>
         </div>
 

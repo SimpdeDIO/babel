@@ -16,6 +16,12 @@ function traducir() {
     const result = document.getElementById("result");
     const targetLanguage = document.getElementById("language-select").value; // Obtener el idioma de destino
     const sourceLanguage = document.getElementById("idiomaDetectadoNombre").dataset.languageCode || 'auto'; // Obtener el idioma detectado o usar 'auto'
+    const textoTra = document.getElementById("textoTra");
+    const textoComun = document.getElementById("textoComun");
+    const idiomInput = document.getElementById("idioma");
+
+
+
 
     console.log("Texto a traducir: " + q);
     console.log("Idioma de origen: " + sourceLanguage);
@@ -52,6 +58,9 @@ function traducir() {
             console.log("Respuesta de la API: ", data);
             const translatedText = data.data.translations[0].translatedText;
             result.textContent = translatedText;
+            textoTra.textContent = translatedText;
+            textoComun.textContent = q;
+            idiomInput.textContent = target
         })
         .catch(error => {
             console.error('Error:', error);
