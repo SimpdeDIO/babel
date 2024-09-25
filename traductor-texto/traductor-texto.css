@@ -192,25 +192,3 @@ body{
     background-color: rgb(145, 145, 145);
     color: black;
 }
-
-.caja-chat{
-    background-color: white;
-    border-radius: 10px;
-}
-
-.caja-chat button{
-    width: 20rem;
-    height: 50px;
-    background: none;
-    border: none;
-}
-
-.cajas-cont{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-
-
-}

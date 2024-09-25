@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BABEL</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="traductor-texto.css">
 
@@ -40,6 +40,7 @@
 
         <div class="allcont">
             <p id="idiomaDetectado">Idioma detectado: <span id="idiomaDetectadoNombre">N/A</span></p>
+
             <label for="language-select">Traducir a:</label>
             <select id="language-select"></select>
             <button class="invertir-btn" onclick="invertirIdiomas()">Invertir Idiomas</button>
@@ -56,13 +57,18 @@
                <p id="result"> </p>
             </div>
         </div>
-                <div class="cajas-cont">
-        <div class="caja-chat">
-            <a href="../chats/historial.html"><button>Guardar Chat</button></a>
-        </div>
-    </div>
-    </div>
+        <div class="cajas-cont">
+            <div class="caja-chat">
+                <form action="guardarhistorial.php" method="POST">
+                    <input id="textoTra" type="text" value="" name="textoTra">
+                    <input id="textoComun" type="text" value="" name="textoComun">
+                    <input id="idioma" type="text" value="" name="idioma">
 
+               <button>Guardar Chat</button></a>     
+                </form>
+                
+            </div>
+        </div>
 
     </div>
 </section>  
