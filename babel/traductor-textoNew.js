@@ -19,6 +19,9 @@ function traducir() {
     const targetLanguage = document.getElementById("language-select").value; // Obtener el idioma de destino
     const sourceLanguage = document.getElementById("idiomaDetectadoNombre").dataset.languageCode || 'auto'; // Obtener el idioma detectado o usar 'auto'
 
+    const textoTra = document.getElementById("textoTra");
+    const textoComun = document.getElementById("textoComun");
+
     console.log("Texto a traducir: " + q);
     console.log("Idioma de origen: " + sourceLanguage);
     console.log("Idioma de destino: " + targetLanguage);
@@ -54,6 +57,8 @@ function traducir() {
             console.log("Respuesta de la API: ", data);
             const translatedText = data.data.translations[0].translatedText;
             result.textContent = translatedText;
+            textoTra.value= translatedText;
+            textoComun.value = q;
         })
         .catch(error => {
             console.error('Error:', error);
@@ -153,8 +158,7 @@ function invertirIdiomas() {
     sourceLanguageElement.textContent = `(${newSourceLanguageName})`;
 
     // Opcional: Limpiar el texto de entrada y el resultado
-    document.getElementById("textoUsuario").value = "";
-    document.getElementById("result").textContent = "";
+
 }
 
 // Cargar los idiomas al cargar la página

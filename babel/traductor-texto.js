@@ -18,7 +18,7 @@ function traducir() {
     const sourceLanguage = document.getElementById("idiomaDetectadoNombre").dataset.languageCode || 'auto'; // Obtener el idioma detectado o usar 'auto'
     const textoTra = document.getElementById("textoTra");
     const textoComun = document.getElementById("textoComun");
-    const idiomInput = document.getElementById("idioma");
+
 
 
 
@@ -60,7 +60,6 @@ function traducir() {
             result.textContent = translatedText;
             textoTra.value= translatedText;
             textoComun.value = q;
-            idiomInput.value = target;
             
         })
         .catch(error => {
@@ -146,24 +145,27 @@ function cargarIdiomas() {
 function invertirIdiomas() {
     const targetSelect = document.getElementById('language-select');
     const sourceLanguageElement = document.getElementById("idiomaDetectadoNombre");
-    
+
+    if (!targetSelect || !sourceLanguageElement) {
+        console.error("Elementos no encontrados: Verifica que 'language-select' y 'idiomaDetectadoNombre' existen en tu HTML.");
+        return;
+    }
+
     // Obtener el idioma de destino actual
     const currentTargetLanguage = targetSelect.value;
     // Obtener el idioma de origen actual
     const currentSourceLanguage = sourceLanguageElement.dataset.languageCode || 'auto';
-    
+
     // Cambiar el idioma de destino al idioma de origen y viceversa
     targetSelect.value = currentSourceLanguage;
     sourceLanguageElement.dataset.languageCode = currentTargetLanguage;
-    
+
     // Actualizar el texto para mostrar el nombre completo del nuevo idioma de origen
     const newSourceLanguageName = languageMap[currentTargetLanguage] || currentTargetLanguage;
     sourceLanguageElement.textContent = `(${newSourceLanguageName})`;
 
-    // Opcional: Limpiar el texto de entrada y el resultado
-    document.getElementById("textoUsuario").value = "";
-    document.getElementById("result").textContent = "";
 }
+
 
 // Cargar los idiomas al cargar la página
 window.onload = cargarIdiomas;

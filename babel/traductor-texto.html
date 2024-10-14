@@ -79,24 +79,28 @@
                 <button class="enviar-btn" type="button" onclick="traducir()">Traducir</button> <!-- Botón para traducir -->
             </div>
         
+        <div class="flecha-cont">
             <div class="flecha-traducir">
                 <i class="bi bi-arrow-down"></i>
+
             </div>
-        
+           
+        </div>
             <div class="texto-cont">
+                <input  class="form-input" id="textoTra"  name="textoTra">
                 <p id="result"> </p> <!-- Aquí se mostrará la traducción -->
             </div>
-        
-            <!-- Formulario para guardar la traducción -->
-            <form method="post" action="guardarhistorial.php" id="formulario-traduccion">
-                <!-- Campos ocultos para enviar el texto original y la traducción -->
-                <input id="textoComun" name="textoComun">
-                <input id="textoTra"  name="textoTra">
-                <input id="idioma"  name="idioma">
-        
-                <!-- Botón para guardar los datos -->
-                <input type="submit" value="Guardar">
-            </form>
+            <div class="form-cont">
+                             <!-- Formulario para guardar la traducción -->
+                             <form method="post" action="guardarhistorial.php" id="formulario-traduccion">
+                                <!-- Campos ocultos para enviar el texto original y la traducción -->
+                                <input type="hidden"  class="form-input" id="textoComun" name="textoComun">
+                                <input type="hidden" class="form-input" id="textoTra"  name="textoTra">
+                        
+                                <!-- Botón para guardar los datos -->
+                                <input type="submit" value="Guardar traduccion">
+                            </form>
+                        </div>
         </div>
         
     </div>
@@ -107,7 +111,9 @@
 </section>  
 
     <script src="traductor-texto.js">
+
         
     </script>
+    
 </body>
 </html>
