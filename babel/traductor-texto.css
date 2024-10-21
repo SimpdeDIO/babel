@@ -24,6 +24,9 @@ body{
     border-radius: 3px;
 }
 
+.form-input{
+    visibility: hidden;
+}
 /*     Cheeseburguer     */
 
 .encabezado{

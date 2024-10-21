@@ -7,6 +7,7 @@ function abrir() {
 function cerrar() {
     nav.classList.remove("visible");
 }
+
 const apiKey = 'AIzaSyBahhDaOWo0LEBjDFZP_Lfvc2GoL6uM2hY'; // Reemplaza con tu clave API
 let languageMap = {};  // Mapeo de código de idioma a nombre de idioma
 
@@ -14,27 +15,20 @@ function traducir() {
     const apiUrl = 'https://translation.googleapis.com/language/translate/v2';
     const q = document.getElementById("textoUsuario").value;
     const result = document.getElementById("result");
-    const targetLanguage = document.getElementById("language-select").value; // Obtener el idioma de destino
-    const sourceLanguage = document.getElementById("idiomaDetectadoNombre").dataset.languageCode || 'auto'; // Obtener el idioma detectado o usar 'auto'
-    const textoTra = document.getElementById("textoTra");
+    const targetLanguage = document.getElementById("language-select").value;
+    const sourceLanguage = document.getElementById("idiomaDetectadoNombre").dataset.languageCode || 'auto';
+    
+    const formulario = document.getElementById("formulario-traduccion");
+    const textoTraducido = document.getElementById("textoTraducido"); 
     const textoComun = document.getElementById("textoComun");
+    const textoTraducidoForm = document.getElementById("textoTraducidoForm");
 
-
-
-
-
-    console.log("Texto a traducir: " + q);
-    console.log("Idioma de origen: " + sourceLanguage);
-    console.log("Idioma de destino: " + targetLanguage);
-
-    // Datos para la solicitud
     const data = {
         q: q,
-        source: sourceLanguage, // Idioma de origen detectado automáticamente
-        target: targetLanguage // Idioma de destino según selección del usuario
+        source: sourceLanguage,
+        target: targetLanguage
     };
 
-    // Opciones de la solicitud
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -44,9 +38,6 @@ function traducir() {
         body: JSON.stringify(data)
     };
 
-    console.log("Datos de solicitud: ", data);
-
-    // Enviar la solicitud
     fetch(apiUrl, requestOptions)
         .then(response => {
             if (!response.ok) {
@@ -55,16 +46,26 @@ function traducir() {
             return response.json();
         })
         .then(data => {
-            console.log("Respuesta de la API: ", data);
             const translatedText = data.data.translations[0].translatedText;
-            result.textContent = translatedText;
-            textoTra.value= translatedText;
-            textoComun.value = q;
-            
+            result.textContent = translatedText;  // Solo muestra la traducción
+            textoTraducido.value = translatedText;  
+            textoComun.value = q;  // Aquí se establece el valor oculto, no se debe mostrar en la pantalla
+            textoTraducidoForm.value = translatedTextq;  
+
+            return fetch(formulario.action, {
+                method: formulario.method,
+                body: new FormData(formulario)
+            });
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json();
         })
         .catch(error => {
             console.error('Error:', error);
-            result.textContent = 'Error al traducir el texto.';
+            alert('Error al traducir el texto.');
         });
 }
 
@@ -75,10 +76,9 @@ function detectarIdioma() {
 
     if (q.trim() === "") {
         document.getElementById("idiomaDetectadoNombre").textContent = 'N/A';
-        return; // No hay texto para detectar
+        return; 
     }
 
-    // Datos para la solicitud de detección de idioma
     const data = {
         q: q
     };
@@ -92,21 +92,16 @@ function detectarIdioma() {
         body: JSON.stringify(data)
     };
 
-    // Enviar la solicitud para detectar el idioma
     fetch(apiUrlDetect, requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data && data.data && data.data.detections && data.data.detections[0]) {
                 const detectedLanguage = data.data.detections[0][0].language;
-                const confidence = data.data.detections[0][0].confidence;
-
-                // Obtener el nombre completo del idioma usando el mapeo
                 const languageDisplay = document.getElementById("idiomaDetectadoNombre");
-                const detectedLanguageName = languageMap[detectedLanguage] || detectedLanguage; // Usa el nombre completo si está en el mapeo, si no muestra el código
+                const detectedLanguageName = languageMap[detectedLanguage] || detectedLanguage;
 
-                // Actualizar el HTML con el nombre del idioma detectado
-                languageDisplay.textContent = `${detectedLanguageName}`; // Mostrar el nombre completo del idioma
-                languageDisplay.dataset.languageCode = detectedLanguage; // Almacenar el código del idioma detectado
+                languageDisplay.textContent = `${detectedLanguageName}`;
+                languageDisplay.dataset.languageCode = detectedLanguage; 
             } else {
                 document.getElementById("idiomaDetectadoNombre").textContent = 'Error';
             }
@@ -119,22 +114,18 @@ function detectarIdioma() {
 
 // Función para cargar los idiomas disponibles de Google Cloud Translation y crear el mapeo
 function cargarIdiomas() {
-    const apiUrlLanguages = `https://translation.googleapis.com/language/translate/v2/languages?key=${apiKey}&target=es`; // target=es para obtener nombres en español
+    const apiUrlLanguages = `https://translation.googleapis.com/language/translate/v2/languages?key=${apiKey}&target=es`; 
 
-    // Llamada para obtener los idiomas
     fetch(apiUrlLanguages)
         .then(response => response.json())
         .then(data => {
             const targetSelect = document.getElementById('language-select');
             
-            // Itera sobre la lista de idiomas y los añade a la lista desplegable
             data.data.languages.forEach(language => {
                 const optionTarget = document.createElement('option');
                 optionTarget.value = language.language;
                 optionTarget.textContent = language.name;
                 targetSelect.appendChild(optionTarget);
-
-                // Crear mapeo de código de idioma a nombre de idioma
                 languageMap[language.language] = language.name;
             });
         })
@@ -146,26 +137,15 @@ function invertirIdiomas() {
     const targetSelect = document.getElementById('language-select');
     const sourceLanguageElement = document.getElementById("idiomaDetectadoNombre");
 
-    if (!targetSelect || !sourceLanguageElement) {
-        console.error("Elementos no encontrados: Verifica que 'language-select' y 'idiomaDetectadoNombre' existen en tu HTML.");
-        return;
-    }
-
-    // Obtener el idioma de destino actual
     const currentTargetLanguage = targetSelect.value;
-    // Obtener el idioma de origen actual
     const currentSourceLanguage = sourceLanguageElement.dataset.languageCode || 'auto';
 
-    // Cambiar el idioma de destino al idioma de origen y viceversa
     targetSelect.value = currentSourceLanguage;
     sourceLanguageElement.dataset.languageCode = currentTargetLanguage;
 
-    // Actualizar el texto para mostrar el nombre completo del nuevo idioma de origen
     const newSourceLanguageName = languageMap[currentTargetLanguage] || currentTargetLanguage;
     sourceLanguageElement.textContent = `(${newSourceLanguageName})`;
-
 }
-
 
 // Cargar los idiomas al cargar la página
 window.onload = cargarIdiomas;

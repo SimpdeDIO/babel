@@ -1,23 +1,47 @@
 <?php
-$host = 'localhost'; // Cambia si es necesario
-$dbname = 'traducciones'; // Nombre de tu base de datos
-$username = 'root'; // Tu usuario de base de datos
-$password = ''; // Tu contraseña de base de datos
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-$textoComun =$_POST['textoComun'];
-$textoTra =$_POST['textoTra'];
+$host = 'localhost';
+$dbname = 'traducciones';
+$username = 'root';
+$password = '';
 
-$conexion = mysqli_connect($host,$username,$password,$dbname);
-$sql= ("INSERT INTO traducciones (textoriginal, textotraducido, fecha)
-VALUES ('$textoComun', '$textoTra', CURRENT_DATE);");
-$resultado = mysqli_query($conexion, $sql);
-if ($resultado) {
-    echo "Se ha insertado correctamente";
-}else{
-    echo "Error al insertar";
+// Captura los datos enviados desde el formulario
+$textoComun = $_POST['textoComun'];
+$textoTra = $_POST['textoTraducido'];
+
+// Verifica que los valores no estén vacíos
+if(empty($textoComun) || empty($textoTra)) {
+    echo json_encode(['status' => 'error', 'message' => 'Campos vacíos']);
+    exit;
 }
 
+// Crear la conexión a la base de datos
+$conexion = new mysqli($host, $username, $password, $dbname);
 
+// Verifica si hubo un error de conexión
+if ($conexion->connect_error) {
+    die(json_encode(['status' => 'error', 'message' => 'Conexión fallida: ' . $conexion->connect_error]));
+}
 
+// Sentencia preparada para insertar los datos
+$sql = "INSERT INTO traducciones (textoriginal, textotraducido, fecha) VALUES (?, ?, CURRENT_DATE)";
 
+// Prepara la consulta
+$stmt = $conexion->prepare($sql);
+
+// Vincula los parámetros a la sentencia (s = string)
+$stmt->bind_param('ss', $textoComun, $textoTra);
+
+// Ejecuta la consulta
+if ($stmt->execute()) {
+    echo json_encode(['status' => 'success', 'message' => 'Se ha insertado correctamente']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Error al insertar: ' . $stmt->error]);
+}
+
+// Cierra la conexión
+$stmt->close();
+$conexion->close();
 ?>
