@@ -1,0 +1,198 @@
+body{
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--azul);
+}
+
+:root{
+    --azul: #1F43DB;
+}
+
+#language-select{
+    margin-bottom: 30px;
+}
+.invertir-btn{
+    margin-bottom: 30px;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.form-input{
+    visibility: hidden;
+}
+/*     Cheeseburguer     */
+
+.encabezado{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.abrir-menu{
+    border-radius: 50%;
+    padding: 8px 10px;
+    border: none;
+    width: 40px;
+    height: 38px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+}
+
+.abrir-menu.abierto{
+    background-color: #162257;
+}
+
+.cerrar-btn-cont{
+    padding: 10px;
+}
+.cerrar-menu{
+    background: transparent;
+    border: none;
+}
+
+
+
+.navbar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: 50%;
+    background-color: white ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-list li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.nav-list li button{
+    width: 195px;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-list li a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar.visible{
+    opacity: 1;
+    visibility: visible;
+    
+}
+
+.perfil-img-cont{
+    margin-top: 20px;
+ display: flex;
+ justify-content: center;
+}
+#perfil-img{
+    width: 50%;
+    height: auto;
+}
+
+
+.welcome-title{
+    margin-top: 55px;
+    text-align: center;
+}
+
+.allcont{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.texto-cont{
+
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+
+    width: 20rem;
+    height: 150px;
+
+}
+
+.texto-cont input{
+    width: 315px;
+    height: 145px;
+    background: none;
+    border: none;
+
+}
+
+.texto-cont input:focus{
+    outline: none;
+}
+
+.flecha-traducir{
+    margin: 15px 0;
+}
+
+
+
+.atras-btn{
+    border-radius: 50%;
+    padding: 8px 10px;
+    border: none;
+    width: 40px;
+    height: 38px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.atras-btn:active{
+    background-color: #162257;
+}
+
+
+.enviar-btn{
+    margin-top: 20px;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.enviar-btn:active{
+    background-color: rgb(145, 145, 145);
+    color: black;
+}
+
