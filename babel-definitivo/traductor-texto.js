@@ -17,8 +17,6 @@ function traducir() {
     const targetLanguage = document.getElementById("language-select").value;
     const sourceLanguage = document.getElementById("idiomaDetectadoNombre").dataset.languageCode || 'auto';
    
-    
-
     const data = {
         q: q,
         source: sourceLanguage,
@@ -44,11 +42,47 @@ function traducir() {
             document.getElementById("textoTraducido").value = translatedText;
             document.getElementById("textoComun").value = q;
             document.getElementById("textoTraducidoForm").value = translatedText;
+            
 
         })
         .catch(error => {
             console.error(error);
         });
+}
+
+function guardarTraduccion() {
+    // Obtener los valores de los campos de texto
+    const textoComun = document.getElementById("textoComun").value;
+    const textoTraducido = document.getElementById("textoTraducidoForm").value;
+
+    // Verificar que los campos no estén vacíos
+    if (!textoComun || !textoTraducido) {
+        alert("Por favor, asegúrate de que el texto original y la traducción no estén vacíos.");
+        return;
+    }
+
+    // Crear los datos para enviar
+    const formData = new FormData();
+    formData.append("textoComun", textoComun);
+    formData.append("textoTraducido", textoTraducido);
+
+    // Realizar la solicitud AJAX
+    fetch("guardarhistorial.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("Traducción guardada con éxito.");
+        } else {
+            alert("Error al guardar la traducción: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Error en la solicitud:", error);
+        alert("Error al guardar la traducción.");
+    });
 }
 
 // Función para detectar automáticamente el idioma del texto

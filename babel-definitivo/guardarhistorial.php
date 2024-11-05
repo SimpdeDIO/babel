@@ -38,6 +38,10 @@ $stmt = $conexion->prepare($sql);
 $stmt->bind_param('ss', $textoComun, $textoTra);
 
 if ($stmt->execute()) {
+
+    header("Location: traductor-texto.html");
+
+    
     echo json_encode(['status' => 'success', 'message' => 'Se ha insertado correctamente']);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Error al insertar: ' . $stmt->error]);
@@ -45,4 +49,6 @@ if ($stmt->execute()) {
 // Cierra la conexión
 $stmt->close();
 $conexion->close();
+
+
 ?>
