@@ -3,19 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./registro.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="guardarRegistro.php" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
-        <label for="correo">Correo o Nombre de usuario:</label>
-        <input type="text" id="correo" name="correo" required>
-        <label for="telefono">Contraseña:</label>
-        <input type="password" id="contraseña" name="contraseña" required>
-        <input type="submit" value="Guardar">
-    </form>
+        
+    <div class="header">
+        <a href="../main-page/main.html"><button class="atras-btn"><i class="bi bi-arrow-left"></i></button></a>
+    </div>
+
+<section class="all">
+
+    <div class="allcont">
+
+         <H1>Registrarse</H1>
+
+         <form action="guardarRegistro.php" method="post" class="form-cont">
+                <div class="user-box">
+                  <input type="text" name="nombre" required="">
+                  <label>Nombre</label>
+                </div>
+                <div class="user-box">
+                  <input type="text" name="apellido" required="">
+                  <label>Apellido</label>
+                </div>
+                <div class="user-box">
+                    <input  type="text" name="correo" required="">
+                    <label>Correo Electronico</label>
+                  </div>
+                  <div class="user-box">
+                    <input type="password" name="contraseña" required="">
+                    <label>Contraseña</label>
+                  </div>
+                <input class="enviar-btn" type="submit" value="Registrarse">
+                
+                  
+           
+        </form>
+
+        <div class="regist-link">
+            <p>¿Ya tienes cuenta?</p>
+              <a href="./inicioSesion.html">Iniciar Sesion</a>
+        </div>
+      
+    </div>
+
+</section>
+     
 </body>
 </html>
+
+
+
+
+<!-- 
+
+<form action="guardarRegistro.php" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
+    <label for="correo">Correo o Nombre de usuario:</label>
+    <input type="text" id="correo" name="correo" required>
+    <label for="telefono">Contraseña:</label>
+    <input type="password" id="contraseña" name="contraseña" required>
+    <input type="submit" value="Guardar">
+</form> -->
