@@ -23,27 +23,113 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <
     <link rel="stylesheet" href="historial.css">
     <title>Traducciones Guardadas</title>
+
+    <style>
+        body{
+    border: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--azul);
+
+
+ 
+}
+
+:root{
+    --azul: #1F43DB;
+}
+
+
+.header{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+.atras-btn{
+    border-radius: 50%;
+    padding: 8px 10px;
+    border: none;
+    width: 40px;
+    height: 38px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.atras-btn:active{
+    background-color: #3048b8;
+}
+
+.all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allcont{
+
+    margin-top: 30px;
+
+    background-color: rgba(31, 67, 219, 0.8) ;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 50px 50px;
+
+    border-radius: 15px;
+    
+}
+
+.titulo{
+    text-align:center;
+}
+
+
+
+.tablecont{
+    display:flex;
+    justify-content:center;
+    margin: 10px;
+
+}
+
+
+    </style>
 </head>
 <body>
-    <h1>Traducciones Guardadas</h1>
+
+<section class="allcont">
+    <h1 class="titulo">Traducciones Guardadas</h1>
+    <div class="tablecont">
     <table>
         <tr>
-            <th>ID</th>
-            <th>Texto Original</th>
-            <th>Texto Traducido</th>
            
-            <th>Fecha</th>
+            <th class="table-data">Texto Original</th>
+            <th class="table-data">Texto Traducido</th>
+           
+            <th class="table-data">Fecha</th>
         </tr>
         <?php foreach ($traducciones as $traduccion): ?>
         <tr>
-            <td><?php echo $traduccion['id']; ?></td>
-            <td><?php echo htmlspecialchars($traduccion['textoriginal']); ?></td>
-            <td><?php echo htmlspecialchars($traduccion['textotraducido']); ?></td>
-            <td><?php echo $traduccion['fecha']; ?></td>
+            
+            <td class="table-data"><?php echo htmlspecialchars($traduccion['textoriginal']); ?></td>
+            <td class="table-data"><?php echo htmlspecialchars($traduccion['textotraducido']); ?></td>
+            <td class="table-data"><?php echo $traduccion['fecha']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
+    </div>
+</section>
 </body>
 </html>

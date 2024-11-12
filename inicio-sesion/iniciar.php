@@ -11,7 +11,7 @@ $resultado = mysqli_query($conexion,$consulta);
 
 if (mysqli_num_rows($resultado) > 0) {
     echo "Bienvenido!!!";
-    header('Location: ../main page/main.html');
+    header('Location: ../main-page/main.html');
 } else {
     echo "Usuario o contraseña incorrecta. <a href='inicioSesion.html'>Intentar de nuevo</a>";
 }
