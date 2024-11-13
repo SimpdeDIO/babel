@@ -23,91 +23,87 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="historial.css">
     <title>Traducciones Guardadas</title>
 
     <style>
-        body{
-    border: none;
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--azul);
+    body {
+        border: none;
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: var(--azul);
+    }
+
+    :root {
+        --azul: #1F43DB;
+    }
+
+    .header {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .atras-btn {
+        border-radius: 50%;
+        padding: 8px 10px;
+        border: none;
+        width: 40px;
+        height: 38px;
+        font-size: 20px;
+        color: white;
+        background-color: transparent;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .atras-btn:active {
+        background-color: #3048b8;
+    }
+
+    .all {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .allcont {
+        margin-top: 30px;
+        background-color: rgba(31, 67, 219, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 50px 50px;
+        border-radius: 15px;
+    }
+
+    .titulo {
+        text-align: center;
+    }
 
 
- 
-}
+    .tablecont {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
 
-:root{
-    --azul: #1F43DB;
-}
-
-
-.header{
-    padding: 10px;
-    display: flex;
-    align-items: center;
-}
-
-
-.atras-btn{
-    border-radius: 50%;
-    padding: 8px 10px;
-    border: none;
-    width: 40px;
-    height: 38px;
-    font-size: 20px;
-    color: white;
-    background-color: transparent;
-    text-align: center;
-    margin-right: 10px;
-}
-
-.atras-btn:active{
-    background-color: #3048b8;
-}
-
-.all{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.allcont{
-
-    margin-top: 30px;
-
-    background-color: rgba(31, 67, 219, 0.8) ;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 50px 50px;
-
-    border-radius: 15px;
-    
-}
-
-.titulo{
-    text-align:center;
-}
-
-
-
-.tablecont{
-    display:flex;
-    justify-content:center;
-    margin: 10px;
-
-}
-
+    .table-data {
+        padding: 10px 50px; /* Aumenta el espacio entre filas y columnas */
+        
+    }
+</style>
 
     </style>
 </head>
 <body>
+    
+<div class="header">
+        <a href="../babel-main/main-page/main.html"><button class="atras-btn"><i class="bi bi-arrow-left"></i></button></a>
+    </div>
 
 <section class="allcont">
     <h1 class="titulo">Traducciones Guardadas</h1>
