@@ -1,0 +1,92 @@
+body{
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--azul);
+}
+
+:root{
+    --azul: #1F43DB;
+}
+
+
+.header{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.atras-btn{
+    border-radius: 50%;
+    padding: 8px 10px;
+    border: none;
+    width: 40px;
+    height: 38px;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.atras-btn:active{
+    background-color: #3048b8;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+}
+
+.allcont{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+#checkGrammar{
+    background-color: white;
+    padding: 10px;
+}
+textarea, button {
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+#output.visible{
+    opacity: 1;
+    visibility: visible;
+}
+
+#output {
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    
+}
+
+#output h3, p{
+    color: black;
+}
+
+.inputcont{
+    display: flex;
+    flex-direction: column;
+}
