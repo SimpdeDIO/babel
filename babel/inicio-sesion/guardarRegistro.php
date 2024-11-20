@@ -7,9 +7,10 @@ $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $correo = $_POST['correo'];
 $contraseña = $_POST['contraseña'];
+$imagen = addslashes(file_get_contents($_FILES["imagen"]["tmp_name"]));
 
-$consulta = "insert into usuario(nombre, apellido, correo, contraseña)
-             value ('$nombre','$apellido','$correo','$contraseña')";
+$consulta = "insert into usuario(nombre, apellido, correo, contraseña,imagen)
+             value ('$nombre','$apellido','$correo','$contraseña','$imagen')";
 
 $resultado = mysqli_query($conexion,$consulta);
 

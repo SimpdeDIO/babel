@@ -17,6 +17,7 @@ if (mysqli_num_rows($resultado) > 0) {
     $_SESSION['datos_columna'] = array();
 
     while($row = $resultado -> fetch_assoc()) {
+        
         $_SESSION['datos_columna'][] = $row;
     }
     echo "Bienvenido!!!";
@@ -24,6 +25,7 @@ if (mysqli_num_rows($resultado) > 0) {
    
     $_SESSION["user"] = $user;
     $usuario =$_SESSION["user"] ;
+ 
     header('Location: ../main-page/main.php');
 } else {
     echo "Usuario o contraseña incorrecta. <a href='inicioSesion.html'>Intentar de nuevo</a>";

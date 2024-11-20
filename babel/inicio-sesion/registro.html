@@ -19,7 +19,7 @@
 
          <H1>Registrarse</H1>
 
-         <form action="guardarRegistro.php" method="post" class="form-cont">
+         <form action="guardarRegistro.php" method="post" class="form-cont" enctype="multipart/form-data">
                 <div class="user-box">
                   <input type="text" name="nombre" required="">
                   <label>Nombre</label>
@@ -35,6 +35,10 @@
                   <div class="user-box">
                     <input type="password" name="contraseña" required="">
                     <label>Contraseña</label>
+                  </div>
+                  <div class="user-box">
+                    <p>Foto de perfilll</p>
+                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
                   </div>
                 <input class="enviar-btn" type="submit" value="Registrarse">
                 

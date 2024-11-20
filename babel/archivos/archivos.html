@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="traductorarchivo.php" method="post" enctype="multipart/form-data">
+        <label for="file">Elige un archivo de texto:</label>
+        <input type="file" name="archivo" id="archivo" accept=".pdf">
+        <select name="target_language">
+            <option value="en">Inglés</option>
+            <option value="es">Español</option>
+            <option value="fr">Francés</option>
+            <!-- Agrega otros idiomas que necesites -->
+        </select>
+        <button type="submit">Traducir</button>
+    </form>
 </body>
 </html>

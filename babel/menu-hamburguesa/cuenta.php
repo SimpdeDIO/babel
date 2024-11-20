@@ -28,12 +28,12 @@
         <div class="config-cont">
             
             <div class="config-list">
-                <form action="">
+                <form action="actualizardatos.php" method="post">
 
                
                 <div class="config-block">
                      <p>Nombre</p>
-                    <input type="text" value='<?php echo $dato['nombre'] ?>'>
+                    <input name="nombre" type="text" value='<?php echo $dato['nombre'] ?>'>
                     
                 </div>
 
@@ -41,19 +41,24 @@
                 <div class="config-block">
 
                 <p>Apellido</p>
-                <input type="text" value='<?php echo $dato['apellido']    ?>'>
+                <input name="apellido" type="text" value='<?php echo $dato['apellido']    ?>'>
                 </div>
 
                
                 <div class="config-block">
                 <p>Correo electronico</p>
-                <input type="text" value='<?php echo $dato['correo']    ?>'>
+                <input name="correo" type="text" value='<?php echo $dato['correo']    ?>'>
                 </div>
                 
               
                 <div class="config-block">
-                      <p>Constraseña</p>
-                <input type="text" value='<?php echo $dato['contraseña']    ?>'>
+                      <p>Contraseña</p>
+                <input name="contraseña" type="text" value='<?php echo $dato['contraseña']    ?>'>
+                </div>
+
+                <div class="config-block">
+                      <p>Foto Perfil</p>
+                <input name="imagen" type="file" value='<?php  echo $dato['imagen']    ?>'>
                 </div>
                 <input class="guardar-btn" type="submit" value='Guardar Cambios'>
 

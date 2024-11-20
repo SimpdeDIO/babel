@@ -17,6 +17,7 @@
    $usuario= $_SESSION["user"] ;
    $datos = $_SESSION['datos_columna'];
    foreach($datos as $dato) {
+    $imagen =$dato['imagen'];
    //Codigo magico para obtener datos del usuario echo $dato['nombre'];
    };
  if ($usuario == "") {
@@ -25,6 +26,7 @@
     }else{
        
     }
+    
 
     ?>
 <section class="main">
@@ -37,7 +39,7 @@
             <div class="cerrar-btn-cont"><button onclick="cerrar()" class="cerrar-menu" id="cerrar-menu"><i class="bi bi-x-lg"></i></button></div>
         
             <div class="perfil-img-cont">
-                <img id="perfil-img" src="../img/usuario.png" alt="">
+                <img id="perfil-img" src='mostrarimagen.php?id=<?php echo $dato['id']?>' alt="">
             </div>
             <ul class="nav-list">
                 <li><a href="../menu-hamburguesa/cuenta.php"><button><p>Cuenta</p></button></a></li>
